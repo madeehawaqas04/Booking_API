@@ -68,8 +68,18 @@ export const login = async (req, res, next) => {
         httpOnly: true,
       })
       .status(200)
-      .json({ userdetails: { ...otherDetails }, isAdmin, token });
+      .json({ userdetails: { ...otherDetails }, isAdmin });
   } catch (err) {
     next(err);
   }
+};
+
+export const logout = async (req, res) => {
+  res
+    .clearCookie("access_token", {
+      sameSite: "none",
+      secure: true,
+    })
+    .status(200)
+    .send("User has been logged out.");
 };

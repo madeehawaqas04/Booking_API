@@ -25,7 +25,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middlewares
-app.use(cors())
+app.use(cors({ origin: process.env.origin, credentials: true }))
 app.use(cookieParser())
 //pass the value in form of json
 app.use(express.json());
