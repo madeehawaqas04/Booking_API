@@ -25,7 +25,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middlewares
-app.use(cors({ origin: "https://bookingdasboard.netlify.app", credentials: true }))
+app.use(cors({ origin: process.env.origin, credentials: true }))
 //pass the value in form of json
 app.use(express.json());
 app.use(cookieParser())
